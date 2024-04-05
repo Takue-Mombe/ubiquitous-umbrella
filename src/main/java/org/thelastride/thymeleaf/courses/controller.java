@@ -19,12 +19,12 @@ public class controller {
     }
 
     @PostMapping("/save")
-    public String save(@RequestBody model model1){
+    public model save(@RequestBody model model1){
 
         model model2= service1.save(model1);
         System.out.println("Saved: "+ model2.getId());
 
-        return "dropdown";
+        return model2;
     }
     @GetMapping("/all")
     public String getAll(@RequestParam(name = "department", required = false) String selectedDepartment,@RequestParam(name = "name", required = false) String selectedName, Model model) {
@@ -34,7 +34,7 @@ public class controller {
         model.addAttribute("selectedDepartment", selectedDepartment);
         model.addAttribute("selectedName",selectedName);
         service1.getAll();
-        return "dropdown"; // Assuming "dropdown" is the name of your Thymeleaf template
+        return "courses"; // Assuming "dropdown" is the name of your Thymeleaf template
     }
 
 
