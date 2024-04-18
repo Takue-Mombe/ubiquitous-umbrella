@@ -1,12 +1,14 @@
 package org.thelastride.thymeleaf.courses;
 
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.thelastride.thymeleaf.lecturers.LecturerModel;
 
 @Entity(name = "programme")
-
-public class model {
+@Getter@Setter
+public class Programme {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
@@ -18,12 +20,6 @@ public class model {
 
     @Column(name = "description")
     public String description;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @OneToOne(mappedBy = "programme", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private LecturerModel lecturer;
 }

@@ -7,22 +7,21 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class service {
+public class Programmeservice {
 
-    private final repo repo1;
+    private final Programmerepo repo1;
 
-    public service(org.thelastride.thymeleaf.courses.repo repo) {
+    public Programmeservice(Programmerepo repo) {
         this.repo1 = repo;
     }
-    public model save(model model1){
+    public Programme save(Programme model1){
         return repo1.save(model1);
     }
-    public List<model>getAll(){
+    public List<Programme>getAll(){
         return repo1.findAll();
     }
 
-
-    public Optional<model> getByDepartment(String department){
+    public Optional<Programme> getByDepartment(String department){
         return repo1.findByDepartment(department);
     }
 }
